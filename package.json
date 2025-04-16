@@ -1,0 +1,53 @@
+{
+  "name": "@nousantx/anyframe-cli",
+  "version": "0.1.0-alpha.4",
+  "description": "Simple cl4ss name extractor, and style generation for AnyFrame/css",
+  "author": "NOuSantx <nousantx@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/nousantx/nothing#readme",
+  "keywords": [
+    "keywords"
+  ],
+  "nothing": {
+    "type": "git",
+    "url": "git+https://github.com/nousantx/nothing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nousantx/nothing/issues"
+  },
+  "files": [
+    "cli.js",
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
+    }
+  },
+  "bin": {
+    "anycli": "cli.js"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^6.2.6"
+  },
+  "dependencies": {
+    "@anyframe/css": "^0.2.0",
+    "@tenoxui/moxie": "^0.4.2",
+    "chalk": "^5.4.1",
+    "chokidar": "^4.0.3",
+    "commander": "^13.1.0",
+    "glob": "^11.0.1",
+    "nguraijs": "^0.2.1"
+  },
+  "packageManager": "pnpm@10.4.0+sha512.6b849d0787d97f8f4e1f03a9b8ff8f038e79e153d6f11ae539ae7c435ff9e796df6a862c991502695c7f9e8fac8aeafc1ac5a8dab47e36148d183832d886dd52"
+}
