@@ -8,7 +8,7 @@ export class ClassNameExtractor {
   async run() {
     if (!this.logger.minimal) this.logger.info('Starting class name extraction and CSS generation')
 
-    const { results, scanTime } = await this.scanner.scanFiles()
+    const { results, scanTime } = await this.scanner.scan()
     const allClassNames = Object.values(results).flat()
     const generation = await this.generator.generate(allClassNames)
 

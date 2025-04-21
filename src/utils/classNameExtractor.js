@@ -13,7 +13,7 @@ export class Extractor {
             /(class|className|\:class)\s*=\s*"[^"]*"/, // static attributes
             /className\s*=\s*{[^}]*}/, // dynamic JSX
             /class:\s*{\s*['"][^'"]*['"]\s*:/, // class directives (Vue, Svelte)
-            /classList\.(add|toggle)\(['"][^'"]*['"]\)/, // DOM classList
+            /classList\.(add|toggle|remove)\(['"][^'"]*['"]\)/, // DOM classList
             ...this.config
           ]
         }

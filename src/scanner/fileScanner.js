@@ -16,7 +16,7 @@ export class FileScanner {
    * Scan files using glob patterns
    * @returns {Object} - Object with file paths as keys and arrays of class names as values
    */
-  async scanFiles() {
+  async scan() {
     const results = {}
     const scanStart = performance.now()
 
