@@ -11,24 +11,24 @@ import {
   ClassNameExtractor,
   FileWatcher
 } from './dist/index.es.js'
-//} from './src/index.js'
+
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+
+const { description, version } = packageJson
+
+program.name('anycli').description(description).version(version)
 
 program
-  .name('extract-classes')
-  .description('Extract class names from source files and generate CSS')
-  .version('0.1.0')
-
-program
-  .option('-c, --config <path>', 'path to config file', process.cwd() + '/anyframe.config.js')
+  .option('-c, --config <path>', 'path to config file', 'anyframe.config.js')
   .option('-i, --include <patterns>', 'glob patterns to include files (comma separated)')
   .option('-e, --exclude <patterns>', 'glob patterns to exclude files (comma separated)')
   .option('-d, --dir <path>', 'root directory', '.')
   .option('-o, --output-dir <path>', 'output directory', 'dist')
-  .option('-f, --output-file <name>', 'output file name', 'styles.css')
+  .option('-f, --output-file <name>', 'output file name', 'index.css')
   .option('-w, --watch', 'watch mode', false)
   .option('-v, --verbose', 'verbose output', false)
   .option('-s, --silent', 'silent mode', false)
-  .option('-m, --minimal', 'minimap mode', false)
+  .option('-m, --minimal', 'minimal mode', false)
   .parse()
 
 async function main() {
@@ -58,7 +58,7 @@ async function main() {
       const userConfig = await import(configPath)
 
       config = { ...config, ...userConfig.default }
-      
+
       logger.debug(`Loaded config from ${options.config}: ${JSON.stringify(config)}`)
     } else {
       logger.debug(`Config file not found at: ${configPath}`)
