@@ -11,18 +11,19 @@ import {
   ClassNameExtractor,
   FileWatcher
 } from './dist/index.es.js'
+//} from './src/index.js'
 
 program
   .name('extract-classes')
   .description('Extract class names from source files and generate CSS')
-  .version('1.0.0')
+  .version('0.1.0')
 
 program
-  .option('-c, --config <path>', 'path to config file', './anyframe.config.js')
+  .option('-c, --config <path>', 'path to config file', process.cwd() + '/anyframe.config.js')
   .option('-i, --include <patterns>', 'glob patterns to include files (comma separated)')
   .option('-e, --exclude <patterns>', 'glob patterns to exclude files (comma separated)')
   .option('-d, --dir <path>', 'root directory', '.')
-  .option('-o, --output-dir <path>', 'output directory', '.generated')
+  .option('-o, --output-dir <path>', 'output directory', 'dist')
   .option('-f, --output-file <name>', 'output file name', 'styles.css')
   .option('-w, --watch', 'watch mode', false)
   .option('-v, --verbose', 'verbose output', false)
@@ -38,24 +39,26 @@ async function main() {
     silent: options.silent,
     minimal: options.minimal
   })
-
   let config = {
     include: ['**/*.{js,jsx,ts,tsx}'],
     exclude: ['**/node_modules/**', '**/dist/**'],
     rootDir: options.dir,
-    outputDir: options.outputDir,
+    outDir: options.outputDir,
     outputFile: options.outputFile,
-    anyframe: {}
+    rules: [],
+    css: {}
   }
 
   try {
     const configPath = path.resolve(options.config)
-    logger.debug(`Looking for config at: ${configPath}`)
+
+    logger.debug(`Found config file at: ${configPath}`)
 
     if (fs.existsSync(configPath)) {
       const userConfig = await import(configPath)
 
       config = { ...config, ...userConfig.default }
+      
       logger.debug(`Loaded config from ${options.config}: ${JSON.stringify(config)}`)
     } else {
       logger.debug(`Config file not found at: ${configPath}`)
@@ -65,12 +68,12 @@ async function main() {
   }
 
   if (options.include) {
-    config.include = options.include.split(',').map(p => p.trim())
+    config.include = options.include.split(',').map((p) => p.trim())
     logger.debug(`Override include patterns from CLI: ${config.include}`)
   }
 
   if (options.exclude) {
-    config.exclude = options.exclude.split(',').map(p => p.trim())
+    config.exclude = options.exclude.split(',').map((p) => p.trim())
     logger.debug(`Override exclude patterns from CLI: ${config.exclude}`)
   }
 
@@ -83,7 +86,8 @@ async function main() {
     {
       include: config.include,
       exclude: config.exclude,
-      rootDir: config.rootDir
+      rootDir: config.rootDir,
+      rules: config.rules
     },
     logger
   )
@@ -91,7 +95,7 @@ async function main() {
   let cssProvider
   try {
     const { AnyCSS } = await import('@anyframe/css')
-    cssProvider = new AnyCSS(config.anyframe)
+    cssProvider = new AnyCSS(config.css)
     logger.debug('Initialize AnyCSS')
   } catch (error) {
     logger.error(`Failed to initialize CSS provider: ${error.message}`)
@@ -101,7 +105,7 @@ async function main() {
   const generator = new CSSGenerator(
     cssProvider,
     {
-      outputDir: config.outputDir,
+      outputDir: config.outDir,
       outputFile: config.outputFile
     },
     logger
@@ -128,7 +132,7 @@ async function main() {
   }
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error('Fatal error:', error)
   process.exit(1)
 })

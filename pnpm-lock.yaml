@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@anyframe/css':
-        specifier: ^0.2.0
-        version: 0.2.0
-      '@tenoxui/moxie':
-        specifier: ^0.4.2
-        version: 0.4.2
       chalk:
         specifier: ^5.4.1
         version: 5.4.1
@@ -30,14 +24,25 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
     devDependencies:
+      '@anyframe/css':
+        specifier: 0.3.0-alpha.0
+        version: 0.3.0-alpha.0(@tenoxui/moxie@0.4.4)
+      '@nousantx/someutils':
+        specifier: ^0.7.0
+        version: 0.7.0
+      '@tenoxui/moxie':
+        specifier: ^0.4.4
+        version: 0.4.4
       vite:
         specifier: ^6.2.6
         version: 6.2.6
 
 packages:
 
-  '@anyframe/css@0.2.0':
-    resolution: {integrity: sha512-s8uA805S0m39x3kNEGB4sH2vZAuJ4pHBCI5hECb0PTIAuv/cwF07sw5HUm8uw3XOJA9gds6p/AXAmc4NeAhbSA==}
+  '@anyframe/css@0.3.0-alpha.0':
+    resolution: {integrity: sha512-MiFzQ/GmWgIuSN9EH8jVL8+GK90oSAEykb4RI6Bie64gnyi2hdqgSG93vPZmgGiEz09m5500BOpaQzL5hiZYlQ==}
+    peerDependencies:
+      '@tenoxui/moxie': '>=0.4.2'
 
   '@esbuild/aix-ppc64@0.25.2':
     resolution: {integrity: sha512-wCIboOL2yXZym2cgm6mlA742s9QeJ8DjGVaL39dLN4rRwrOgOyYSnOaFPhKZGLb2ngj4EyfAFjsNJwPXZvseag==}
@@ -193,6 +198,9 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
+  '@nousantx/someutils@0.7.0':
+    resolution: {integrity: sha512-8gvUgjFSZRtOZFCyKgK1UhbCOrr1oSF/KC/yl/JbpBAIuWA9BVSQpLyT18aN3HEuSgW3Ru5Aq1cccbTKHg7pYQ==}
+
   '@rollup/rollup-android-arm-eabi@4.40.0':
     resolution: {integrity: sha512-+Fbls/diZ0RDerhE8kyC6hjADCXA1K4yVNlH0EYfd2XjyH0UGgzaQ8MlT0pCXAThfxv3QUAczHaL+qSv1E4/Cg==}
     cpu: [arm]
@@ -293,8 +301,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tenoxui/moxie@0.4.2':
-    resolution: {integrity: sha512-lk3nfUK+P+N+RJx1tJDMuqjrESwi51AOFTnGM8RsnuXmFX+pCDECKXX6XTYQyKG92O2d0KZ76gizOJ8FSJJsaw==}
+  '@tenoxui/moxie@0.4.4':
+    resolution: {integrity: sha512-iGw0d9V1uHb8/CwYR0BpArw0FZEnrDs9m9/YIK4HlTWakwQXTdZYPOtHxIqtmVQxWwNzZ0cCrY0y2VC6P6uqHg==}
 
   '@tenoxui/types@0.1.2':
     resolution: {integrity: sha512-Vvmcj5qN9qqEnGjBx3S3fQD3yty2RdMG2qtssQywBdEbX9ast1nuHCe60ML4q3+40Dfz2LMRh4Ny7vzGta5xPA==}
@@ -520,8 +528,9 @@ packages:
 
 snapshots:
 
-  '@anyframe/css@0.2.0':
+  '@anyframe/css@0.3.0-alpha.0(@tenoxui/moxie@0.4.4)':
     dependencies:
+      '@tenoxui/moxie': 0.4.4
       '@tenoxui/types': 0.1.2
 
   '@esbuild/aix-ppc64@0.25.2':
@@ -608,6 +617,10 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
+  '@nousantx/someutils@0.7.0':
+    dependencies:
+      '@tenoxui/types': 0.1.2
+
   '@rollup/rollup-android-arm-eabi@4.40.0':
     optional: true
 
@@ -668,7 +681,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.40.0':
     optional: true
 
-  '@tenoxui/moxie@0.4.2':
+  '@tenoxui/moxie@0.4.4':
     dependencies:
       '@tenoxui/types': 0.1.2
 

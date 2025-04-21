@@ -1,11 +1,11 @@
 export default {
-  include: ['**/*.{js,jsx,ts,tsx}'],
+  include: ['app/**/*.{js,jsx,ts,tsx}'],
   exclude: ['**/node_modules/**', '**/dist/**', '**/build/**'],
-  rootDir: 'app',
-  outputDir: '.generated',
+  outDir: 'css',
   outputFile: 'styles.css',
-  anyframe: {
+  css: {
     preflight: true,
     showLayerDirective: true
-  }
+  },
+  rules: [/class="([^"]*)"/]
 }

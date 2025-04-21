@@ -1,6 +1,6 @@
 {
   "name": "@nousantx/anyframe-cli",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "description": "Simple cl4ss name extractor, and style generation for AnyFrame/css",
   "author": "NOuSantx <nousantx@gmail.com>",
   "license": "MIT",
@@ -38,11 +38,12 @@
     "build": "vite build"
   },
   "devDependencies": {
+    "@anyframe/css": "0.3.0-alpha.0",
+    "@nousantx/someutils": "^0.7.0",
+    "@tenoxui/moxie": "^0.4.4",
     "vite": "^6.2.6"
   },
   "dependencies": {
-    "@anyframe/css": "^0.2.0",
-    "@tenoxui/moxie": "^0.4.2",
     "chalk": "^5.4.1",
     "chokidar": "^4.0.3",
     "commander": "^13.1.0",
