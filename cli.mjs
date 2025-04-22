@@ -82,16 +82,6 @@ async function main() {
     logger.debug(`Override root directory from CLI: ${config.rootDir}`)
   }
 
-  const scanner = new FileScanner(
-    {
-      include: config.include,
-      exclude: config.exclude,
-      rootDir: config.rootDir,
-      rules: config.rules
-    },
-    logger
-  )
-
   let cssProvider
   try {
     const { AnyCSS } = await import('@anyframe/css')
@@ -101,6 +91,17 @@ async function main() {
     logger.error(`Failed to initialize CSS provider: ${error.message}`)
     process.exit(1)
   }
+
+  const scanner = new FileScanner(
+    {
+      include: config.include,
+      exclude: config.exclude,
+      rootDir: config.rootDir,
+      rules: config.rules,
+      cssConfig: cssProvider.getConfig()
+    },
+    logger
+  )
 
   const generator = new CSSGenerator(
     cssProvider,
