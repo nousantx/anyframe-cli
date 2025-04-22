@@ -12,7 +12,11 @@ import {
   FileWatcher
 } from './dist/index.es.js'
 
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const packageJsonPath = path.resolve(__dirname, './package.json')
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+
 
 const { description, version } = packageJson
 
