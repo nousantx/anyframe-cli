@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@anyframe/css": "0.3.0-alpha.2",
-    "@tenoxui/moxie": "0.5.0-alpha.0",
+    "@tenoxui/moxie": "0.5.0-alpha.1",
     "chalk": "^5.4.1",
     "chokidar": "^4.0.3",
     "commander": "^13.1.0",
