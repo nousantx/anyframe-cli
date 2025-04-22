@@ -1,6 +1,6 @@
 {
   "name": "@nousantx/anyframe-cli",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "description": "Simple class names extractor, and style generation for AnyFrame/css",
   "author": "NOuSantx <nousantx@gmail.com>",
   "license": "MIT",
