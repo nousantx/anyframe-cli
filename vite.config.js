@@ -12,12 +12,13 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        'fs',
-        'path',
+        'commander',
+        'chokidar',
         'chalk',
         'glob',
-        'chokidar',
-        'commander',
+        'path',
+        'fs',
+        'url',
         '@anyframe/css',
         '@tenoxui/moxie',
         'nguraijs'
