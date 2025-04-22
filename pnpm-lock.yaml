@@ -10,10 +10,7 @@ importers:
     dependencies:
       '@anyframe/css':
         specifier: 0.3.0-alpha.0
-        version: 0.3.0-alpha.0(@tenoxui/moxie@0.4.4)
-      '@tenoxui/moxie':
-        specifier: ^0.4.4
-        version: 0.4.4
+        version: 0.3.0-alpha.0(@tenoxui/moxie@0.5.0-alpha.0)
       chalk:
         specifier: ^5.4.1
         version: 5.4.1
@@ -27,12 +24,15 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       nguraijs:
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.3.0
+        version: 0.3.0
     devDependencies:
       '@nousantx/someutils':
         specifier: ^0.7.0
         version: 0.7.0
+      '@tenoxui/moxie':
+        specifier: 0.5.0-alpha.0
+        version: 0.5.0-alpha.0
       vite:
         specifier: ^6.2.6
         version: 6.2.6
@@ -301,8 +301,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tenoxui/moxie@0.4.4':
-    resolution: {integrity: sha512-iGw0d9V1uHb8/CwYR0BpArw0FZEnrDs9m9/YIK4HlTWakwQXTdZYPOtHxIqtmVQxWwNzZ0cCrY0y2VC6P6uqHg==}
+  '@tenoxui/moxie@0.5.0-alpha.0':
+    resolution: {integrity: sha512-ZrfVcxQI7qDJoHXkjWfiEzhnkHt/fIZ3swaSjjqVpMCjcwTZLd0mXfvXO3f1Ozu7ZaRsuERJ44slCXQtnYp2mg==}
 
   '@tenoxui/types@0.1.2':
     resolution: {integrity: sha512-Vvmcj5qN9qqEnGjBx3S3fQD3yty2RdMG2qtssQywBdEbX9ast1nuHCe60ML4q3+40Dfz2LMRh4Ny7vzGta5xPA==}
@@ -411,8 +411,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nguraijs@0.2.1:
-    resolution: {integrity: sha512-sCRUN6w0NU4t1NJQbaku2U3idUgncEk6pZguozAnazWNT27Mv3yly9qseW43lg/6nIqM0C+LsQneShmT5GwstA==}
+  nguraijs@0.3.0:
+    resolution: {integrity: sha512-2qXQ57WBEF6FUw/QgH4S6o6HmxvNr1lSw8R6ZEH7o8W5rkFobboPH6CvzDzkk37o4vX/4I5u+xRkpWlOudEGCw==}
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
@@ -528,9 +528,9 @@ packages:
 
 snapshots:
 
-  '@anyframe/css@0.3.0-alpha.0(@tenoxui/moxie@0.4.4)':
+  '@anyframe/css@0.3.0-alpha.0(@tenoxui/moxie@0.5.0-alpha.0)':
     dependencies:
-      '@tenoxui/moxie': 0.4.4
+      '@tenoxui/moxie': 0.5.0-alpha.0
       '@tenoxui/types': 0.1.2
 
   '@esbuild/aix-ppc64@0.25.2':
@@ -681,7 +681,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.40.0':
     optional: true
 
-  '@tenoxui/moxie@0.4.4':
+  '@tenoxui/moxie@0.5.0-alpha.0':
     dependencies:
       '@tenoxui/types': 0.1.2
 
@@ -794,7 +794,7 @@ snapshots:
 
   nanoid@3.3.11: {}
 
-  nguraijs@0.2.1: {}
+  nguraijs@0.3.0: {}
 
   package-json-from-dist@1.0.1: {}
 
