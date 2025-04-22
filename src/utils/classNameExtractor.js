@@ -24,8 +24,8 @@ export class Extractor {
 
       const classNames = cn
         .tokenize(code)
-        .flatMap(line => line.filter(token => token.type === 'className'))
-        .map(token => token.value)
+        .flatMap((line) => line.filter((token) => token.type === 'className'))
+        .map((token) => token.value)
 
       if (classNames.length === 0) return []
 
