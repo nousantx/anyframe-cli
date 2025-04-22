@@ -1,37 +1,33 @@
 import Ngurai from 'nguraijs'
+import Moxie from '@tenoxui/moxie'
 
 export class Extractor {
-  constructor(config = []) {
+  constructor(config = [], cssConfig = {}) {
     this.config = config
+    this.cssConfig = cssConfig
+    this.regexp = new Moxie(cssConfig).regexp()
   }
   extractClassNames(code) {
     try {
       const cn = new Ngurai({
+        customOnly: true,
+        noUnknownToken: true,
+        noSpace: true,
         custom: {
-          classNames: [
-            /(cn|clsx|classname|className)\s*\([^)]*\)/, // function calls
-            /(class|className|\:class)\s*=\s*"[^"]*"/, // static attributes
-            /className\s*=\s*{[^}]*}/, // dynamic JSX
-            /class:\s*{\s*['"][^'"]*['"]\s*:/, // class directives (Vue, Svelte)
-            /classList\.(add|toggle|remove)\(['"][^'"]*['"]\)/, // DOM classList
+          className: [
+            new RegExp(this.regexp.all), // catch all possible class names with value
+            new RegExp('(?:(' + this.regexp.prefix + '):)?' + this.regexp.type), // catch only valueless class name such as `flex` from `moxie.classes`
             ...this.config
           ]
         }
       })
 
-      const tokens = cn
+      const classNames = cn
         .tokenize(code)
-        .flatMap((line) => line.filter((token) => token.type === 'classNames'))
-        .map((token) => token.value)
+        .flatMap(line => line.filter(token => token.type === 'className'))
+        .map(token => token.value)
 
-      if (tokens.length === 0) return []
-
-      const classNames = new Ngurai()
-        .tokenize(tokens.join('\n'))
-        .flatMap((line) => line.filter((token) => token.type === 'string'))
-        .map((token) => token.value.slice(1, -1))
-        .flatMap((str) => str.split(/\s+/))
-        .filter((className) => className.trim().length > 0)
+      if (classNames.length === 0) return []
 
       return [...new Set(classNames)]
     } catch (error) {

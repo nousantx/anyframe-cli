@@ -9,7 +9,7 @@ export class FileScanner {
     this.exclude = options.exclude || ['**/node_modules/**', '**/dist/**', '**/build/**']
     this.rootDir = options.rootDir || '.'
     this.logger = logger
-    this.extractor = new Extractor(options.rules)
+    this.extractor = new Extractor(options.rules, options.cssConfig)
   }
 
   /**
