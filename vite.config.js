@@ -11,7 +11,17 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: ['fs', 'path', 'chalk', 'glob', 'chokidar', 'commander', '@anyframe/css'],
+      external: [
+        'fs',
+        'path',
+        'chalk',
+        'glob',
+        'chokidar',
+        'commander',
+        '@anyframe/css',
+        '@tenoxui/moxie',
+        'nguraijs'
+      ],
       output: {
         exports: 'named'
       }
